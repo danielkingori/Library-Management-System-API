@@ -48,3 +48,4 @@ class UserLoginSerializer(serializers.Serializer):
         
         token, created = Token.objects.get_or_create(user=user)
         return {'user':user, 'token':token.key}
+        
