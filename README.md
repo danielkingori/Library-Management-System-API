@@ -24,12 +24,14 @@ CRUD operations to manage library users. Each user has the following attributes:
 ### 3. Check-Out and Return Books
 **Check-Out Books:**
 
-Users can check out available books, reducing the number of available copies. Only one copy of a book can be checked out per user at a time. Users cannot check out books if there are no available copies.
+- Users can check out available books, reducing the number of available copies.
+- Only one copy of a book can be checked out per user at a time.
+- Users cannot check out books if there are no available copies.
 
 **Return Books:**
 
-Users can return previously checked-out books, increasing the available copies.
-Track and log the dates when the book was checked out and returned.
+- Users can return previously checked-out books, increasing the available copies.
+- Track and log the dates when the book was checked out and returned.
 
 ### 4. View Available Books
 The system allows users to:
