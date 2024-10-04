@@ -1,4 +1,4 @@
-# Library Management System API**
+# Library Management System API
 
 
 A Library Management System API using Django and Django REST Framework. The API will serve as the backend for managing library resources, allowing users to interact with the system by borrowing, returning, and viewing books. You will be tasked with creating and deploying a fully functional API, simulating a real-world development environment, where backend logic, database management, and API design play crucial roles.
@@ -15,7 +15,7 @@ The system provides full Create, Read, Update, and Delete (CRUD) operations for 
 - Ensure each book has a unique ISBN.
 
 ### 2. Users Management (CRUD)
-Implement CRUD operations to manage library users. Each user has the following attributes:
+CRUD operations to manage library users. Each user has the following attributes:
 - Username (unique)
 - Email
 - Date of Membership
@@ -23,8 +23,11 @@ Implement CRUD operations to manage library users. Each user has the following a
 
 ### 3. Check-Out and Return Books
 **Check-Out Books:**
+
 Users can check out available books, reducing the number of available copies. Only one copy of a book can be checked out per user at a time. Users cannot check out books if there are no available copies.
+
 **Return Books:**
+
 Users can return previously checked-out books, increasing the available copies.
 Track and log the dates when the book was checked out and returned.
 
@@ -47,18 +50,18 @@ The system allows users to:
 
 # Installation
 Clone the repository:
-``` git clone https://github.com/danielkingori/Library-Management-System-API.git
-cd Library-Management-System-API`
+`git clone https://github.com/danielkingori/Library-Management-System-API.git`
+`cd Library-Management-System-API`
 
 Install dependencies:
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 Apply migrations:
-python manage.py makemigrations
-python manage.py migrate
+`python manage.py makemigrations`
+`python manage.py migrate`
 
 Run the development server:
-python manage.py runserver
+`python manage.py runserver`
 
 Access the localhost dev url:
 http://127.0.0.1:8000/
