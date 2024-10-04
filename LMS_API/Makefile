@@ -1,6 +1,6 @@
 weka:
 	git add .
-	git commit -m "book app updates, serializers and view"
+	git commit -m "user registration serializer and view"
 	git push
 
 
