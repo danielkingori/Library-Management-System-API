@@ -66,5 +66,22 @@ Run the development server:
 Access the localhost dev url:
 http://127.0.0.1:8000/
 
+
+## API Endpoints
+
+List all books (supports filtering) : `/api/books/`
+
+Retrieve, update, or delete a book : `/api/books/<id>/`
+
+List all users : `/api/users/`
+
+Retrieve, update, or delete a user : `/api/users/<id>/`
+
+Check out a book : `/api/checkout/`
+
+Return a book : `/api/return/`
+
+View available books only : `/api/books/available/`
+
 ## Credits
 Developed by Dan-King'ori the Jaba Scripter.
