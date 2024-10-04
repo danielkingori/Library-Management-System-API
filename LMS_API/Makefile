@@ -1,6 +1,6 @@
 weka:
 	git add .
-	git commit -m "LMS_API"
+	git commit -m "book app routing"
 	git push
 
 
