@@ -53,7 +53,7 @@ The system allows users to:
 # Installation
 Clone the repository:
 `git clone https://github.com/danielkingori/Library-Management-System-API.git`
-`cd Library-Management-System-API`
+`cd LMS_API`
 
 Install dependencies:
 `pip install -r requirements.txt`
