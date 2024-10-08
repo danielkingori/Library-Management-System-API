@@ -8,8 +8,4 @@ class BookSerializer(serializers.ModelSerializer):
         model = Book
         fields = '__all__'
 
-
-
-
-
 #book borrowing serializer
