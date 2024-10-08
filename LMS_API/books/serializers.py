@@ -29,8 +29,10 @@ class BookReturnSerializer(serializers.ModelSerializer):
 
 class BookBorrowSerializer(serializers.ModelSerializer):
     book_title = serializers.CharField(source='book.title', read_only=True)
-    user_name = serializers.CharField(source='user.username', read_only=True)
+    book_author = serializers.CharField(source='book.author', read_only=True)
+    checkout_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+    return_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", allow_null=True)
 
     class Meta:
         model = BorrowRecord
-        fields = ['book_title', 'user_name', 'checkout_date', 'return_date']
+        fields = ['book_title', 'book_author', 'checkout_date', 'return_date']

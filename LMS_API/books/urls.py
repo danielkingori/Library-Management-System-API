@@ -10,6 +10,6 @@ router.register(r'authors', AuthorViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('books/<int:book_id>/borrow', BorrowRecordView.as_view(), name='book-borrow'),
-    path('books/return/<int:borrow_id>/', ReturnRecordView.as_view(), name='book-return'),
+    path('books/return/<int:book_id>/', ReturnRecordView.as_view(), name='book-return'),
     path('books/history/', BookBorrowHistoryView.as_view(), name='book-borrow-history'),
 ]

@@ -72,6 +72,6 @@ class BookBorrowHistoryView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        # Optionally, filter to show only checkouts for the current user
+        # Return only the borrowing history for the logged-in user
         user = self.request.user
         return BorrowRecord.objects.filter(user=user).order_by('-borrow_date')
