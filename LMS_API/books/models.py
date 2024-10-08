@@ -27,7 +27,11 @@ class BorrowRecord(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     borrow_date = models.DateField(auto_now_add=True)
     return_date = models.DateField(null=True, blank=True)
+    
+    #to ensure a user can only have one checkout per book at a time
+    class Meta:
+        unique_together = ('user', 'book')
 
     def __str__(self):
-        return f"{self.user.username} borrowing {self.book.title}"
+        return f"{self.user.username} - {self.book.title}"
 
