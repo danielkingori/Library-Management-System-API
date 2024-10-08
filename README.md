@@ -71,11 +71,11 @@ http://127.0.0.1:8000/
 
 List all books (supports filtering) : `/api/books/`
 
-Retrieve, update, or delete a book : `/api/books/<id>/`
+Retrieve, update, or delete a book : `/api/books/<pk>/`
 
 List all users : `/api/users/`
 
-Retrieve, update, or delete a user : `/api/users/<id>/`
+Retrieve, update, or delete a user : `/api/users/<pk>/`
 
 Check out a book : `/api/checkout/`
 
