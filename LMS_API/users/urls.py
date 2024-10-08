@@ -1,21 +1,10 @@
-from django.urls import path, include
-from .views import UserRegistrationViewSet, UserLoginViewSet
 from rest_framework.routers import DefaultRouter
-
-
-router = DefaultRouter()
-router.register(r'register', UserRegistrationViewSet, basename='register')
-router.register(r'login', UserLoginViewSet, basename='login')
+from django.urls import path, include
+from .views import UserRegistrationView
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 urlpatterns = [
-    path('', include(router.urls)),
-]
-
-# from django.urls import path
-# from .views import UserRegistrationView, UserLoginSerializer
-
-# urlpatterns = [
-#     path('register/', UserRegistrationView.as_view(), name='register'),
-#     path('login/', UserLoginSerializer, name='login'),
+    path('register/', UserRegistrationView.as_view(), name='register'),
+    path('auth/', TokenObtainPairView.as_view(), name='auth'),
    
-# ]
+]
