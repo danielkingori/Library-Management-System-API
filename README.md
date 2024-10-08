@@ -11,8 +11,6 @@ The system provides full Create, Read, Update, and Delete (CRUD) operations for 
 - ISBN (unique)
 - Published Date
 - Number of Copies Available
-**Validation**:
-- Ensure each book has a unique ISBN.
 
 ### 2. Users Management (CRUD)
 CRUD operations to manage library users. Each user has the following attributes:
