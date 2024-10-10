@@ -32,7 +32,7 @@ class BorrowRecordView(APIView):
         #check fi the user already checkedout this book
         
         if BorrowRecord.objects.filter(user=request.user, book=book, return_date__isnull=True).exists():
-            return Response({"error": "you have alreadyc hecked out this book"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": "you have already checked out this book"}, status=status.HTTP_400_BAD_REQUEST)
         
         #create a new checkout entry
         checkout = BorrowRecord.objects.create(user=request.user, book=book)
@@ -42,7 +42,7 @@ class BorrowRecordView(APIView):
         book.save()
         
         serializer = BookBorrowSerializer(checkout)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response({"message": "Book borrowed successfully."}, status=status.HTTP_201_CREATED)
     
 
 class ReturnRecordView(APIView):
@@ -64,7 +64,7 @@ class ReturnRecordView(APIView):
         book.save()
 
         serializer = BookReturnSerializer(checkout)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response({"message": "Book returned successfully."}, status=status.HTTP_200_OK)
         
         
 class BookBorrowHistoryView(generics.ListAPIView):
