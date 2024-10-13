@@ -152,7 +152,7 @@ def return_book(request):
             # Prepare a response indicating success and any fine charged
             return Response({
                 "message": "Book returned successfully.",
-                "fine": fine
+                "fine": f"${fine:.2f}"
             }, status=status.HTTP_200_OK)
 
 
