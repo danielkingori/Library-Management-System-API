@@ -4,17 +4,21 @@ from rest_framework import serializers
 from .models import Book, BorrowRecord, Author
 from datetime import date
 
-#books Serializer
-class BookSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Book
-        fields = '__all__'
 
 #Authors 
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
         fields = '__all__'
+
+
+
+#books Serializer
+class BookSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Book
+        fields = '__all__'
+
 
 class BookBorrowSerializer(serializers.ModelSerializer):
     book_title = serializers.CharField(source='book.title', read_only=True)
@@ -48,27 +52,28 @@ class BookBorrowSerializer(serializers.ModelSerializer):
 
 
 #book return serializer
-# class BookReturnSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = BorrowRecord
-#         fields = ['id']
-        
 class BookReturnSerializer(serializers.ModelSerializer):
-    book_id = serializers.IntegerField()
-    
     class Meta:
         model = BorrowRecord
-        fields = 'id'
+        fields = ['book_id']
+        
+# class BookReturnSerializer(serializers.ModelSerializer):
+#     book_id = serializers.IntegerField()
+    
+#     class Meta:
+#         model = BorrowRecord
+#         fields = 'id'
 
-    def validate_book_id(self, value):
-        # You can add any additional validation for book_id here if needed
-        if value <= 0:
-            raise serializers.ValidationError("Book ID must be a positive integer.")
-        return value
+#     def validate_book_id(self, value):
+#         # You can add any additional validation for book_id here if needed
+#         if value <= 0:
+#             raise serializers.ValidationError("Book ID must be a positive integer.")
+#         return value
 
 
 #borrow history serializer
 class BorrowHistorySerializer(serializers.ModelSerializer):
+    book_id = serializers.CharField(source='book.id', read_only=True)
     book_title = serializers.CharField(source='book.title', read_only=True)
     book_author = serializers.CharField(source='book.author', read_only=True)
     date_borrowed =  serializers.DateField(source='borrow_date', read_only=True)
@@ -78,4 +83,4 @@ class BorrowHistorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = BorrowRecord
-        fields = ['book_title','book_author', 'book_status', 'date_borrowed', 'date_returned', 'date_due']
+        fields = ['book_id','book_title','book_author', 'book_status', 'date_borrowed', 'date_returned', 'date_due']

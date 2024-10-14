@@ -30,6 +30,7 @@ class BorrowRecord(models.Model):
     borrow_date = models.DateField(auto_now_add=True)  # Automatically set when borrowed
     due_date = models.DateField() 
     return_date = models.DateField(null=True, blank=True)  # Return date, allows null if not returned
+    returned = models.BooleanField(default=False) #track if the book has been returned
 
     class Meta:
         unique_together = ('user', 'book')

@@ -11,15 +11,14 @@ from rest_framework.decorators import api_view
 from datetime import datetime
 
 
+class AuthorViewSet(viewsets.ModelViewSet):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer     
+    
 
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-
-
-class AuthorViewSet(viewsets.ModelViewSet):
-    queryset = Author.objects.all()
-    serializer_class = AuthorSerializer        
 
 
 @api_view(['POST'])
@@ -62,15 +61,21 @@ def borrow_book(request):
 
 @api_view(['POST'])
 def return_book(request, book_id):
-    # Adjusted the serializer initialization to only require book_id.
     serializer = BookReturnSerializer(data=request.data)
+    # print(f"Received request with book_id: {book_id}")  # Log the book_id
 
     if serializer.is_valid():
-        book_id = serializer.validated_data.get('book_id')  # Directly use the validated data
         
         try:
             # Retrieve the user's borrow record for the specific book
             borrow_record = BorrowRecord.objects.get(user=request.user, book_id=book_id)
+            
+             # Check if the book has already been returned
+            if borrow_record.returned:
+                return Response({"error": "This book has already been returned."}, status=status.HTTP_400_BAD_REQUEST)
+            
+            # Mark the book as returned
+            borrow_record.returned = True  
             
             # Set the return_date to today's date when the book is returned
             borrow_record.return_date = timezone.now().date()
@@ -105,25 +110,6 @@ def return_book(request, book_id):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# @api_view(['POST'])
-# def return_book(request, book_id):
-#     try:
-#         # Get the current user from the request
-#         user = request.user
-        
-#         # Attempt to fetch the active borrow record for the book and user
-#         borrow_record = BorrowRecord.objects.get(user=user, book__id=book_id, return_date__isnull=True)
-
-#         # If found, proceed to mark it as returned
-#         borrow_record.return_date = timezone.now().date()  # Set the current date as the return date
-#         borrow_record.save()
-
-#         return Response({"success": "Book returned successfully."}, status=status.HTTP_200_OK)
-
-#     except BorrowRecord.DoesNotExist:
-#         return Response({"error": "No borrow record found for this book."}, status=status.HTTP_404_NOT_FOUND)
-#     except Exception as e:
-#         return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
     
 @api_view(['GET'])
 def borrow_history(request):
