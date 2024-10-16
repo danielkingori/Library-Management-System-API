@@ -1,6 +1,6 @@
 weka:
 	git add .
-	git commit -m "Authentication and custom roles"
+	git commit -m "custom admin interface"
 	git push
 
 
