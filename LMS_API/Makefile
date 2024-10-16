@@ -1,6 +1,6 @@
 weka:
 	git add .
-	git commit -m "custom admin interface"
+	git commit -m "logic updates to accomodate the different borrowing and return scinarios"
 	git push
 
 

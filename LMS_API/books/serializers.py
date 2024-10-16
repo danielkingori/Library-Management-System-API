@@ -15,7 +15,14 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 #books Serializer
 class BookSerializer(serializers.ModelSerializer):
+    
+    author_name = serializers.SerializerMethodField()
+    
+    # Method to get the author's name
+    def get_author_name(self, obj):
+        return obj.author.name 
+    
     class Meta:
         model = Book
-        fields = '__all__'
+        fields = ['id', 'title', 'isbn', 'published_date', 'number_of_copies_available', 'author_name']
 

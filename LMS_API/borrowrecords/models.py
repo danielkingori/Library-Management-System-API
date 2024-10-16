@@ -12,9 +12,9 @@ class BorrowRecord(models.Model):
     return_date = models.DateField(null=True, blank=True)  # Return date, allows null if not returned
     returned = models.BooleanField(default=False) #track if the book has been returned
 
-    #to ensure that a user can not be associated with the same book twice
-    class Meta:
-        unique_together = ('user', 'book')
+    # # #to ensure that a user can not be associated with the same book twice
+    # class Meta:
+    #     unique_together = ('user', 'book', 'returned')
 
     @property
     def status(self):

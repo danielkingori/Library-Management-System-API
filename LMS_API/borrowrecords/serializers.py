@@ -56,3 +56,16 @@ class BorrowHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = BorrowRecord
         fields = ['book_id','book_title','book_author', 'book_status', 'date_borrowed', 'date_returned', 'date_due']
+    
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+
+        # Check if the book has been returned
+        if instance.return_date:  # If the book has been returned
+            # Remove the `date_due` since it's returned
+            representation.pop('date_due', None)
+        else:  # If the book is currently borrowed or overdue
+            # Remove `date_returned` if the book is still borrowed or overdue
+            representation.pop('date_returned', None)
+
+        return representation
