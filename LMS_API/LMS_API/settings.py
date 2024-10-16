@@ -42,9 +42,8 @@ INSTALLED_APPS = [
     'users',
     'books',
     'rest_framework',
-    'rest_framework.authtoken',
     'rest_framework_simplejwt',
-    'dj_rest_auth',
+    'django_filters',
    
     
 ]
@@ -136,6 +135,8 @@ AUTH_USER_MODEL = 'users.CustomUser'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
     ),
 }
 

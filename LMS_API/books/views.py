@@ -1,14 +1,12 @@
 from django.shortcuts import render
 from .models import Book, Author, BorrowRecord
-from rest_framework import generics, viewsets, status, permissions
+from rest_framework import viewsets, status
 from .serializers import BookSerializer, AuthorSerializer, BookBorrowSerializer, BookReturnSerializer, BorrowHistorySerializer
-from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework import status, request
 from django.utils import timezone
 from rest_framework.decorators import api_view
-from datetime import datetime
+from .filters import BookFilter
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class AuthorViewSet(viewsets.ModelViewSet):
@@ -19,6 +17,8 @@ class AuthorViewSet(viewsets.ModelViewSet):
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = BookFilter
 
 
 @api_view(['POST'])

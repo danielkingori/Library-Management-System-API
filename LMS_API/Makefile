@@ -20,3 +20,6 @@ delete:
 
 run:
 	python manage.py runserver
+
+txt:
+	pip freeze > requirements.txt
