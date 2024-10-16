@@ -1,6 +1,6 @@
 weka:
 	git add .
-	git commit -m "user registration serializer and view"
+	git commit -m "Authentication and custom roles"
 	git push
 
 

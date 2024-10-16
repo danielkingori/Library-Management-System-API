@@ -56,20 +56,7 @@ class BookReturnSerializer(serializers.ModelSerializer):
     class Meta:
         model = BorrowRecord
         fields = ['book_id']
-        
-# class BookReturnSerializer(serializers.ModelSerializer):
-#     book_id = serializers.IntegerField()
-    
-#     class Meta:
-#         model = BorrowRecord
-#         fields = 'id'
-
-#     def validate_book_id(self, value):
-#         # You can add any additional validation for book_id here if needed
-#         if value <= 0:
-#             raise serializers.ValidationError("Book ID must be a positive integer.")
-#         return value
-
+ 
 
 #borrow history serializer
 class BorrowHistorySerializer(serializers.ModelSerializer):
