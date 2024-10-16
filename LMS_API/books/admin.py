@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Author, Book, BorrowRecord
+from .models import Author, Book
 # Register your models here.
 
 class AuthorAdmin(admin.ModelAdmin):
@@ -11,9 +11,7 @@ class BookAdmin(admin.ModelAdmin):
     
     list_display = ('title','author', 'isbn', 'published_date', 'number_of_copies_available')
 
-class BorrowRecordAdmin(admin.ModelAdmin):
-    list_display = ('user', 'book', 'borrow_date', 'return_date', 'status')
+
 
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Book, BookAdmin)
-admin.site.register(BorrowRecord, BorrowRecordAdmin)
