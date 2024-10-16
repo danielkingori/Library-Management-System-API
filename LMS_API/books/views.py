@@ -7,18 +7,23 @@ from django.utils import timezone
 from rest_framework.decorators import api_view
 from .filters import BookFilter
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.pagination import LimitOffsetPagination
 
 
 class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer     
     
+class CustomPagination(LimitOffsetPagination):
+    default_limit = 10
+    max_limit = 50
 
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     filter_backends = (DjangoFilterBackend,)
     filterset_class = BookFilter
+    pagination_class = CustomPagination
 
 
 @api_view(['POST'])
