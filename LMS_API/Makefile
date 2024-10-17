@@ -1,6 +1,6 @@
 weka:
 	git add .
-	git commit -m "documentation polishes"
+	git commit -m "read me updates"
 	git push
 
 
