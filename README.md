@@ -73,15 +73,23 @@ List all books (supports filtering) : `/api/books/`
 
 Retrieve, update, or delete a book : `/api/books/<pk>/`
 
-List all users : `/api/users/`
+List all Authors : `/api/authors/`
 
-Retrieve, update, or delete a user : `/api/users/<pk>/`
+Retrieve, update, or delete an Author : `/api/authors/<pk>/`
 
-Check out a book : `/api/checkout/`
+Borrow out a book : `/api/borrow/`
 
-Return a book : `/api/return/`
+Return a book : `/api/return/<pk>/`
 
-View available books only : `/api/books/available/`
+View borrowed and returned books history as a member or admin : `/api/history/`
+
+Filter available books only : `/api/books/?Available=True`
+
+Filter books by Author Name : `/api/books/?author_name=name`
+
+Filter books by Title : `/api/books/?title=title`
+
+Search book by ISBN (eg isbn = 9781101684843 ) : `/api/books/?isbn=9781101684843`
 
 ## Credits
 Developed by Dan-King'ori the Jaba Scripter.
