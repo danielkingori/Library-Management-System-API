@@ -84,6 +84,12 @@ Borrow out a book : `/api/borrow/`
 
 Return a book : `/api/return/<pk>/`
 
+Register as library member : `/api/register/`
+
+Login to get the Access tokens : `/api/auth/`
+
+Return a book : `/api/return/<pk>/`
+
 View borrowed and returned books history as a member or admin : `/api/history/`
 
 Filter available books only : `/api/books/?Available=True`
