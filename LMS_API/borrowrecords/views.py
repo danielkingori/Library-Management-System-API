@@ -25,14 +25,14 @@ def borrow_book(request):
 
             # Check if the user already has the book borrowed, or already returned
             existing_borrow_record = BorrowRecord.objects.filter(user=request.user, book=book, return_date__isnull=True)
-            # existing_borrow_record = BorrowRecord.objects.filter(user=request.user, book=book, returned=False).first()
+            
             if existing_borrow_record.exists():
                 return Response({"error": "You have already borrowed this book and not yet returned it."}, status=status.HTTP_400_BAD_REQUEST)
 
             borrow_record = BorrowRecord.objects.create(
                 book=book,
-                user=request.user,  # Assuming you set user during borrowing
-                borrow_date=timezone.now(),  # Set current date as the checkout date
+                user=request.user,  # access the set user during borrowing based on access token
+                borrow_date=timezone.now(),  # Set current date as the borrow date
                 due_date=serializer.validated_data['due_date'],
             )
 
@@ -88,7 +88,7 @@ def return_book(request, book_id):
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    
+#maintaning the history of each borrow & return record
 @api_view(['GET'])
 def borrow_history(request):
     try:

@@ -7,5 +7,5 @@ router.register(r'books', BookViewSet)
 router.register(r'authors', AuthorViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', include(router.urls)), #access all the default routes for books and authors
 ]

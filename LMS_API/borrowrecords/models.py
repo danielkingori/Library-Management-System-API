@@ -15,7 +15,8 @@ class BorrowRecord(models.Model):
     # # #to ensure that a user can not be associated with the same book twice
     # class Meta:
     #     unique_together = ('user', 'book', 'returned')
-
+    
+    #define the status of the books in the borrow-return transactions
     @property
     def status(self):
         # If return_date is None, it means the book is still borrowed

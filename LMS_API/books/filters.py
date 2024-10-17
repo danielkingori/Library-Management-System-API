@@ -1,6 +1,7 @@
 import django_filters
 from .models import Book
 
+#a book filter based on the various fields
 class BookFilter(django_filters.FilterSet):
     title = django_filters.CharFilter(lookup_expr='icontains', required=False)
     author = django_filters.CharFilter(field_name='author__name', lookup_expr='icontains', required=False)

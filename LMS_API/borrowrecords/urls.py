@@ -1,7 +1,5 @@
 from django.urls import path, include
 from .views import borrow_history, borrow_book, return_book
-from rest_framework.routers import DefaultRouter
-from . import views
 
 
 

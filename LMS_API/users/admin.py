@@ -9,7 +9,7 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = (
         #Unpack the default fieldsets from UserAdmin
         *UserAdmin.fieldsets,  
-        # Add your custom field of role
+        # Add custom field of role, either admin or member
         (None, {'fields': ('role',)}), 
     )
 
