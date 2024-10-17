@@ -72,7 +72,7 @@ http://127.0.0.1:8000/
 
 ## API Endpoints
 
-Register as library member : `/api/register/`
+Register as a library member : `/api/register/`
 
 Login to get the Access & Refresh tokens : `/api/auth/`
 
@@ -84,9 +84,7 @@ List all Authors : `/api/authors/`
 
 Retrieve, update, or delete an Author : `/api/authors/<pk>/`
 
-Borrow out a book : `/api/borrow/`
-
-Return a book : `/api/return/<pk>/`
+Borrow a book : `/api/borrow/`
 
 Return a book : `/api/return/<pk>/`
 
