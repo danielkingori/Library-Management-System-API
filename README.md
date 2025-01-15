@@ -4,7 +4,7 @@ Live deployed link: https://danielkingori.pythonanywhere.com/api/
 # Library Management System API
 
 
-A Library Management System API using Django and Django REST Framework. The API will serve as the backend for managing library resources, allowing users to interact with the system by borrowing, returning, and viewing books. You will be tasked with creating and deploying a fully functional API, simulating a real-world development environment, where backend logic, database management, and API design play crucial roles.
+A Library Management System API using Django and Django REST Framework. The API will serve as the backend for managing library resources, allowing users to interact with the system by borrowing, returning, and viewing books. 
 
 ## Features 
 ### 1. Books Management (CRUD)
